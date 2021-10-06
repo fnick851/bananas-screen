@@ -16,7 +16,7 @@ type GLTFResult = GLTF & {
 function Banana({ z }: { z: number }) {
   const ref = useRef<Mesh>();
   const { nodes, materials } = useGLTF(
-    "/banana-compressed-transformed.glb"
+    "./banana-compressed-transformed.glb"
   ) as GLTFResult;
 
   const { viewport, camera } = useThree();
