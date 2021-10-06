@@ -50,7 +50,7 @@ function Banana({ z }: { z: number }) {
 
 function App({ count = 150, depth = 100 }) {
   return (
-    <Canvas gl={{ alpha: false }} camera={{ near: 0.01, far: 100, fov: 30 }}>
+    <Canvas gl={{ alpha: false }} camera={{ near: 0.01, far: 100, fov: 50 }}>
       <color attach="background" args={["khaki"]} />
       <spotLight position={[10, 10, 10]} intensity={1} />
       <Suspense fallback={null}>
