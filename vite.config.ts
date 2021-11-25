@@ -8,10 +8,10 @@ export default defineConfig({
     outDir: "docs",
     rollupOptions: {
       output: {
-        entryFileNames: "bananas-background.js",
+        entryFileNames: "3d-thing-background.js",
         manualChunks: undefined,
       },
     },
   },
-  base: "/bananas-screen/",
+  base: "/things-screen/",
 });

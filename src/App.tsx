@@ -7,16 +7,16 @@ import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
   nodes: {
-    banana: THREE.Mesh;
+    zuchinni: THREE.Mesh;
   };
   materials: {
-    peel: THREE.MeshStandardMaterial;
+    skin: THREE.MeshStandardMaterial;
   };
 };
-function Banana({ z }: { z: number }) {
+function Thing({ z }: { z: number }) {
   const ref = useRef<Mesh>();
   const { nodes, materials } = useGLTF(
-    "./banana-compressed-transformed.glb"
+    "./zuchinni-transformed.glb"
   ) as GLTFResult;
 
   const { viewport, camera } = useThree();
@@ -41,28 +41,28 @@ function Banana({ z }: { z: number }) {
   return (
     <mesh
       ref={ref}
-      geometry={nodes.banana.geometry}
-      material={materials.peel}
-      material-emissive="orange"
+      geometry={nodes.zuchinni.geometry}
+      material={materials.skin}
+      material-emissive="hotpink"
     />
   );
 }
 
-function App({ count = 150, depth = 100 }) {
+function App({ count = 100, depth = 100 }) {
   return (
     <Canvas gl={{ alpha: false }} camera={{ near: 0.01, far: 100, fov: 50 }}>
       <color attach="background" args={["khaki"]} />
       <spotLight position={[10, 10, 10]} intensity={1} />
-      <Suspense fallback={null}>
+      <Suspense fallback={"loading..."}>
         <Environment preset="sunset" />
         {Array.from({ length: count }, (_, i) => (
-          <Banana key={i} z={(-i / count) * depth - 15} />
+          <Thing key={i} z={(-i / count) * depth} />
         ))}
         <EffectComposer>
           <DepthOfField
             target={[0, 0, depth / 2]}
             focalLength={0.5}
-            bokehScale={10}
+            bokehScale={4}
           />
         </EffectComposer>
       </Suspense>
