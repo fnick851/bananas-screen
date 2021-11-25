@@ -13,5 +13,5 @@ export default defineConfig({
       },
     },
   },
-  base: "/things-screen/",
+  base: "/bananas-screen/",
 });
